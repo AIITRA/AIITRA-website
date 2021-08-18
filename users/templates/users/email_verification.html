@@ -1,0 +1,21 @@
+{% extends "users/base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Verify Email
+{% endblock title%}
+{% block content %}
+    <div class="content-section w-50 text-center" style="margin-left:25%">
+    <form method="POST">
+    {% csrf_token %}
+        <fieldset class="form-group">
+    <legend class="border-bottom" mb-4>
+        Verify Email
+    </legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Send Email</button>
+        </div>
+    </form>
+    </div>
+{% endblock content %}

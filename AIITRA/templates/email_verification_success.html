@@ -1,0 +1,14 @@
+{% extends "users/base.html" %}
+
+{% block content %}
+    {% if success %}
+    <h2>Email verified successfully</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            <a href="{% url 'login' %}">Log In Here</a>
+        </small>
+    </div>
+        {% else %}
+        <h2>Verification failed</h2>
+    {% endif %}
+{% endblock content %}

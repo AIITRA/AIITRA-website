@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}AIITRA{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'users/css/main-page.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'users/js/script.js' %}"></script>
+
+</head>
+<body >
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+        <a href="{% url 'AIITRA-home' %}#home">
+        <img src="{%static '/users/images/Logo/logo_image.svg' %}" alt="AIITRA logo" class="m-1" style="width:50px;">
+         </a>
+    <a href="{% url 'AIITRA-home' %}#home">
+        <img src="{%static '/users/images/Logo/logo_text.svg' %}" alt="AIITRA text" class="m-1 ml-4" style="width:110px;">
+    </a>
+        <!-- <a class="navbar-brand" href="#">AIITRA</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="navbar-nav " style="margin-left: 65%">
+         {% if user.is_authenticated %}
+             <a class="nav-link nav-item px-2 text-right" href="{% url 'profile' %}" data-toggle="tooltip" data-placement="bottom" title="Profile"><img class="rounded-circle article-image img-fluid img-pro"  style="width:40px" src="{{ user.profile.image.url }}"></a>
+    {% endif %}
+        </div>
+            <ul class="navbar-nav ml-auto mr-3">
+
+                    {% if user.is_authenticated == False %}
+                    <li class="nav-item px-2 text-right">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif     %}
+
+                <li class="nav-item px-2 text-right">
+                    <a class="nav-link" href="{% url 'AIITRA-home' %}#events">Events</a>
+                </li>
+                <li class="nav-item px-2 text-right">
+                    <a class="nav-link" href="{% url 'AIITRA-home' %}#team">Team</a>
+                </li>
+                <li class="nav-item px-2 text-right">
+                    <a class="nav-link" href="{% url 'AIITRA-home' %}#contact">Contact</a>
+                </li>
+            {% if user.is_authenticated %}
+            <a class="nav-link nav-item px-2 text-right" href="{% url 'logout' %}" data-toggle="tooltip" data-placement="bottom" title="Logout"><img src="{%static '/users/images/signs/logout.png' %}" alt="AIITRA logo" class="m-1" style="width:20px;"></a>
+            {% endif %}
+            </ul>
+        </div>
+    </nav>
+        <div class="row w-100">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} w-100 text-center">
+
+                {{ message }}
+              </div>
+
+            {% endfor %}
+          {% endif %}
+        </div>
+{% block content %}{% endblock %}
+    <hr>
+    <section class="contact" id="contact">
+        <div class="container-fluid text-center">
+            <header class="section-header p-5">
+                <h1>Contact</h1>
+            </header>
+            <div class="row">
+                <div class="contact-info col-sm-4 col-md-4 col-6">
+                    <div class="text-left px-5 pb-5">
+                        <div class="row description-title mb-3">
+                            <img src="{%static '/users/images/Logo/logo_image.svg' %}" alt="John Doe" class="m-1" style="width:50px;">
+                            <img src="{%static '/users/images/Logo/logo_text.svg' %}" alt="John Doe" class="m-1 ml-4" style="width:110px;">
+                        </div>
+                        <h4>All IIT Robotics Association</h4>
+                        <p>This is a community of tech enthusiasts trying to promote technical learning and implementation by conducting hackathons and other such competitons.</p>
+                    </div>
+                    <p class="contact-text">Get in touch with us:</p>
+                    <div class="contact-links">
+                        <a href="#" class="icon">
+                            <i class="fa fa-facebook-square"></i>
+                        </a>
+                        <a href="#" class="icon">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="icon">
+                            <i class="fa fa-linkedin-square"></i>
+                        </a>
+                        <a href="#" class="icon">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="useful-links col-sm-2 col-md-2 col-6 text-left pl-5">
+                    <h5>Useful Links</h5>
+                    <ul>
+                        <li>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="#">Events</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="#">Team</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right"></i>
+                            <a href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-6 col-12">
+                    <div class="contact-form typeform-widget" data-url="https://form.typeform.com/to/JDBqU1Xr?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer" id="footer">
+        <div class="container text-center">
+            <div class="copyright p-3">
+                © Copyright <strong>AIITRA</strong>. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

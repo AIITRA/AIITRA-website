@@ -1,0 +1,57 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% load socialaccount%}
+{% load crispy_forms_tags %}
+{% block title %}
+    Login
+{% endblock title%}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="row w-100">
+              <div class="alert alert-primary w-100 text-center">
+                Already Logged in!
+              </div>
+        </div>
+        <script>window.location.replace('http://127.0.0.1:8000/');</script>
+    {% else %}
+<div class="container">
+         <div class="row">
+
+        <div class="col-4">
+
+    <div class="content-section w-75 text-center" style="margin-left:100px">
+    <form method="POST">
+    {% csrf_token %}
+        <fieldset class="form-group">
+    <legend class="border-bottom" mb-4>
+        Login
+    </legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Login</button>
+            <a class = "ml-2" href="{% url 'password_reset' %}">Reset Password</a>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Not registered yet? <a class = "ml-2" href="{% url 'user-register' %}">Sign Up Now!</a>
+        </small>
+    </div>
+    </div>
+            </div>
+<div class="col-4">
+<div class="content-section w-75 text-center" style="margin-left:100px">
+   <legend class="border-bottom" mb-4>
+        Or
+    </legend>
+<a class="nav-item nav-link" href="{% provider_login_url 'google' %}"><img src={% static 'users/images/signs/google_signin_logo.png' %}  class="m-1" style="width:250px;">
+</a>
+    <a class="nav-item nav-link" href="{% provider_login_url 'github' %}"><img src={% static 'users/images/signs/github_login_button.png' %}  class="m-1" style="   width:250px;"></a>
+    </div>
+</div>
+         </div>
+        </div>
+
+    {% endif %}
+{% endblock content %}

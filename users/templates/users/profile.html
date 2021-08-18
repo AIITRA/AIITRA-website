@@ -1,0 +1,121 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+{% block content %}
+
+    <div class="content-section" style="margin-left: 1%">
+
+        <div class="media" style="margin-left: 1%">
+            <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="w-50">
+                <fieldset class="form-group">
+                    {{ p_form.image }}
+                </fieldset>
+            </div>
+        </form>
+
+            <img class="rounded-circle account-img" src="{{ img }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-secondary">{{ user.email }}</p>
+            </div>
+        </div>
+         <div class="row">
+<div class="col" style="margin-left: 1%">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="w-50">
+                <fieldset class="form-group">
+                    <legend class="border-bottom" mb-4>
+                        Profile Info
+                    </legend>
+                    {{ p_form|crispy }}
+
+                    {{ u_form|crispy }}
+
+
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+        </form>
+</div>
+        <div class="col">
+        <form method="POST" enctype="multipart/form-data" action="{% url 'password_change' %}">
+            {% csrf_token %}
+            <div class="w-50">
+                <fieldset class="form-group">
+                    <legend class="border-bottom" mb-4>
+                        Change your password
+                    </legend>
+                    {{ password_change_form|crispy }}
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Change</button>
+            </div>
+
+        </form>
+        </div>
+            </div>
+{#                <form method="POST" enctype="multipart/form-data" action="{% url 'socialaccount_connections' %}">#}
+{#            {% csrf_token %}#}
+{#            <div class="w-50">#}
+{#                <fieldset class="form-group">#}
+{#                    <legend class="border-bottom" mb-4>#}
+{#                        Social Accounts#}
+{#                    </legend>#}
+{#                    {{ social_form|crispy }}#}
+{#                </fieldset>#}
+{#            </div>#}
+{#            <div class="form-group">#}
+{#                <button class="btn btn-outline-info" type="submit">Change</button>#}
+{#            </div>#}
+{##}
+{#        </form>#}
+        {#         <table>#}
+        {#         <tr>#}
+        {#             <th>Social</th>#}
+        {#             <th>Connect or disconnect</th>#}
+        {#         </tr>#}
+        {##}
+        {#             <tr>#}
+        {#                 <td><img src="{%static '/users/images/Signs/google-logo.png' %}" class="m-1" style="width:50px;"></td>#}
+        {#                 <td>#}
+        {#                     {% if google_link == True%}#}
+        {#<a href="#">#}
+        {#                            <img src="{%static '/users/images/Signs/Disconnect.jpg' %}" alt="Connect to github" class="m-1" style="width:150px;">#}
+        {#                             </a>#}
+        {#                         {% else %}#}
+        {##}
+        {#                            <a href="{% provider_login_url 'google' %}">#}
+        {#                            <img src="{%static '/users/images/Signs/Connect.jpg' %}" alt="Connect to google" class="m-1" style="width:150px;">#}
+        {#                             </a>#}
+        {#                     {% endif %}#}
+        {#                 </td>#}
+        {#             </tr>#}
+        {#<tr>#}
+        {#                 <td><img src="{%static '/users/images/Signs/github-logo.png' %}" class="m-1" style="width:50px;"></td>#}
+        {#                 <td>#}
+        {#                     {% if github_link == True%}#}
+        {#            <a href="#">#}
+        {#                            <img src="{%static '/users/images/Signs/Disconnect.jpg' %}" alt="Connect to github" class="m-1" style="width:150px;">#}
+        {#                             </a>#}
+        {#                         {% else %}#}
+        {#                            <a href="{% provider_login_url 'github' %}">#}
+        {#                            <img src="{%static '/users/images/Signs/Connect.jpg' %}" alt="Connect to github" class="m-1" style="width:150px;">#}
+        {#                             </a>#}
+        {#                     {% endif %}#}
+        {#                 </td>#}
+        {#             </tr>#}
+        {##}
+        {##}
+        {##}
+        {##}
+        {#         </table>#}
+        <a href={% url 'socialaccount_connections' %} class="btn btn-outline-info">Manage Social Accounts</a>
+    </div>
+{% endblock content %}

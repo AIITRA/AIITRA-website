@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@600&display=swap');
 
+
+
 body {
 	padding-top: 75px;
 }
@@ -14,13 +16,7 @@ header {
 }
 
 section {
-	padding: 1% 0 4% 0;
-}
-.section-header {
-	padding: 5%;
-}
-.section-header h1 {
-	font-size: 3vw;
+	padding: 20px 0 50px 0;
 }
 hr {
 	border-top: 5px solid #E2DFDF;
@@ -38,7 +34,7 @@ nav div ul li:hover {
 .nav-link {
 	font-size: 1.2rem;
 }
-.navbar a:hover span{
+.navbar > .navbar-collapse > .navbar-nav > .nav-item > a:hover {
     color: white;
 }
 
@@ -47,18 +43,18 @@ nav div ul li:hover {
 /* Home */
 /*================================*/
 .home {
-	padding: 3% 0 0 0;
+	padding: 75px 0 0 0;
 	color: white;
 	background:linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8) ), url("../images/Background/bg9.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
 .home h1 {
-	font-size: 5vw;
-	padding: 7% 0 7% 0; 
+	font-size: 80px;
+	padding: 100px 0 70px 0; 
 }
 .home p {
-	font-size: 2.3vw;
+	font-size: 30px;
 	padding: 0 0 10% 0;
 	margin: 0;
 }
@@ -80,33 +76,16 @@ nav div ul li:hover {
 	border-color: #0E5560;
 	background: rgba(124, 241, 255, 0.9);
 	color: #022B32;
-	/*border-radius: 20px;*/
+	border-radius: 20px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.events .event-img {
-	padding: 0;
-}
-.events .card-img {
-	padding: 10%;
 }
 .events .card hr {
 	border-top: 4px solid #0E5560;
 	width: 50%;
 	margin: 20px auto 20px;
 }
-.events .event-details {
-	padding-top: 3%;
-}
-.events .event-description {
-	padding: 0% 5% 0%;
-}
-.events .event-link {
-	padding: 5%;
-}
-.events .event-link a{
-	color: white;
-	background-color: #2C95AB;
-	border-style: none;
+.events event-link a{
+	color: #0F304F;
 	text-align: center;
 }
 
@@ -122,7 +101,7 @@ nav div ul li:hover {
 
 .sponsors img{
 	width: 100%;
-	padding: 0% 15% 10% 15%;
+	padding: 10% 20% 10% 20%;
 }
 .sponsors a {
 	color: #0A4459;
@@ -141,9 +120,6 @@ nav div ul li:hover {
 }
 .team header {
 	color: white;
-}
-.team .team-member {
-	padding: 0 5% 5%;
 }
 .team .card {
 	border-radius: 20px 20px 20px 20px;
@@ -216,27 +192,11 @@ nav div ul li:hover {
 	background-repeat: no-repeat;
 	background-size: 100% 100%;  
 }
-.contact .contact-info h4 {
-	font-size: 1.5vw;
-}
-.contact .description {
-	padding: 0 8% 5% 8%;
-}
-.contact .description-title {
-	margin-bottom: 2%;
-}
-.contact .logo-img {
-	width: 12%;
-}
-.contact .logo-text {
-	width: 25%;
-}
 .contact-text {
-	font-size: 1.5vw;
-	margin: 0;
+	font-size: 25px;
 }
 .contact .icon {
-	font-size: 2.5vw;
+	font-size: 40px;
 	margin: 0 5px 0 5px;
 }
 /*.contact .fa-circle-thin {
@@ -253,8 +213,8 @@ nav div ul li:hover {
 	text-decoration: none;
 	color: blue;
 }
-.contact-form .typeform-widget{
-	padding: 0 5% 10% 5%;
+.contact-form {
+	padding: 0 50px 100px 50px;
 }
 
 /*================================*/
